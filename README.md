@@ -13,3 +13,13 @@
      3. 코프링으로 사이드 프로젝트 진행 
   3. Rust
      1. FP + WebAssembly
+- Menu
+   - 01_functional_programing
+      - 쏙쏙 들어오는 함수형 코딩을 읽고 ..
+   - 02_kotlin
+      - 함수형 코딩 언어로써 Kotlin을 익히기
+   - 03_ps (problem solving)
+      - 거창하게 썼지만 코딩테스트 연습
+      - kt로 풀면 더 좋고.
+   - 99_ETC
+      - 개인 생각 a.k.a 일기
