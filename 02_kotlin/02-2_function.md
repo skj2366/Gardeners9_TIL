@@ -171,9 +171,62 @@ enum class Animal {
 }
 ```
 
+```kt
+enum class Day {
+    MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
+}
+
+```
+
+- Day.MONDAY, Day.TUESDAY와 같이 사용
+- 열거형의 속성과 메서드
+```kt
+enum class Day(val abbreviation: String) {
+    MONDAY("Mon"), TUESDAY("Tue"), WEDNESDAY("Wed"), THURSDAY("Thu"),
+    FRIDAY("Fri"), SATURDAY("Sat"), SUNDAY("Sun")
+
+    fun isWeekend(): Boolean {
+        return this == SATURDAY || this == SUNDAY
+    }
+}
+
+```
+
+- when 식과의 사용
+  - enum class는 when 식과 함께 사용하면 강력한 패턴 매칭(Pattern Matching)을 제공
+
+```kt
+fun getDayType(day: Day): String {
+    return when (day) {
+        Day.SATURDAY, Day.SUNDAY -> "Weekend"
+        else -> "Weekday"
+    }
+}
+
+```
+
 - 프로퍼티가 있는 enum
 
 ```kt
- 작성중 입니다. ... 아 뭔가 정리하기가 너무 난잡하고 힘드네요 
- 글 정리에 소질이 없따 ..
+enum class Color(val rgb: Int, val hexCode: String) {
+    RED(0xFF0000, "#FF0000"),
+    GREEN(0x00FF00, "#00FF00"),
+    BLUE(0x0000FF, "#0000FF"),
+    YELLOW(0xFFFF00, "#FFFF00");
+
+    // 이 열거형에 대한 추가 메서드나 프로퍼티를 정의할 수도 있습니다.
+    fun getColorInfo(): String {
+        return "RGB: $rgb, HEX: $hexCode"
+    }
+}
+
+fun main() {
+    val color = Color.RED
+    println("${color.name}: ${color.getColorInfo()}")
+}
+
 ```
+
+- Color 열거형은 rgb와 hexCode 두 개의 프로퍼티를 가지고 있음
+- 각 열거된 상수(RED, GREEN, BLUE, YELLOW)는 이 프로퍼티에 값을 할당
+- getColorInfo와 같이 열거형에 메서드도 추가 가능 
