@@ -11,6 +11,17 @@ accumulate function
 inline fun <S, T : S> Array<out T>.reduce(
     operation: (acc: S, T) -> S
 ): S
+
+public inline fun <S, T : S> Array<out T>.reduce(operation: (acc: S, T) -> S): S {
+    if (isEmpty())
+        throw UnsupportedOperationException("Empty array can't be reduced.")
+    var accumulator: S = this[0]
+    for (index in 1..lastIndex) {
+        accumulator = operation(accumulator, this[index])
+    }
+    return accumulator
+}
+
 ```
 
 > 공식문서의 reduce(), 즉 누산기이다.
@@ -42,6 +53,12 @@ inline fun <T, R> Array<out T>.fold(
     initial: R,
     operation: (acc: R, T) -> R
 ): R
+
+public inline fun <T, R> Array<out T>.fold(initial: R, operation: (acc: R, T) -> R): R {
+    var accumulator = initial
+    for (element in this) accumulator = operation(accumulator, element)
+    return accumulator
+}
 ```
 
 > 공식문서의 fold()
@@ -60,5 +77,40 @@ println(res)
 // 515
 ```
 
-list가 비어있으면 reduce는 에러 (UnsupportedOperationException) 발생
-fold는 정상 출력 됨
+-   list가 비어있으면 reduce는 에러 (UnsupportedOperationException) 발생
+    fold는 정상 출력 됨
+
+-   reduce()에서 빈 list로 예상되는 경우에는 reduceOrNull를 사용
+
+## reduceIndexed
+
+reduce()와 같이 누산기 기능을 하지만 index가 존재한다.
+
+```kt
+inline fun <S, T : S> Array<out T>.reduceIndexed(
+    operation: (index: Int, acc: S, T) -> S
+): S
+```
+
+```kt
+val strings = listOf("a", "b", "c", "d")
+println(strings.reduce { acc, string -> acc + string }) // abcd
+println(strings.reduceIndexed { index, acc, string -> acc + string + index }) // ab1c2d3
+```
+
+## foldIndexed
+
+fold()와 같지만 index가 존재
+
+```kt
+inline fun <T, R> Array<out T>.foldIndexed(
+    initial: R,
+    operation: (index: Int, acc: R, T) -> R
+): R
+```
+
+```kt
+val strings = listOf("a", "b", "c", "d")
+println(strings.fold("start") { acc, string -> acc + string }) // startabcd
+println(strings.foldIndexed("start") { index, acc, string -> acc + string + index }) // starta0b1c2d3
+```
