@@ -1,6 +1,6 @@
-# max()
-
 `import kotlin.math.*`
+
+# max()
 
 두 수를 인수로 받아서 더욱 큰 값을 반환
 
