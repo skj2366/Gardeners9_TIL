@@ -1,6 +1,3 @@
-[submodule "kopring_tutorial"]
-	path = kopring_tutorial
-	url = https://github.com/skj2366/kopring_tutorial.git
 [submodule "ingres-manager"]
 	path = ingres-manager
 	url = https://github.com/skj2366/ingres-manager.git
