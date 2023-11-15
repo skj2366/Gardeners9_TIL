@@ -17,4 +17,11 @@
 -   시리얼 포트는 데이터를 바이트 단위로 주고 받을 수 있게 해주는 양방향 통신 인터페이스
 -   입출력 스트림은 Streams API에 의해 처리
 
-WIP
+## usb-detection
+
+-   nodejs 환경에서 usb 감지를 할 수 있게 해주는 라이브러리
+-   usb-detection시스템에서 USB 장치의 삽입/제거 이벤트를 수신
+-   Electron의 대상 버전에 맞게 컴파일 되어야 함
+    -   Node.js 및 Electron 버전용 사전 컴파일된 바이너리는 prebuild를 사용하여 빌드 및 게시되며 Electron-rebuild를 사용하여 자동으로 설치
+
+> https://www.npmjs.com/package/usb-detection
