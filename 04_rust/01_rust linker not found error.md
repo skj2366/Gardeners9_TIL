@@ -57,9 +57,8 @@ Visual Studio 2022를 깔았던 흔적이 있다.
 
 ![alt text](image-2.png)
 
-다운로드 완료 후 재 컴파일 !!!
-성공...은 했으나 다른 에러가 발생
-To Be Continued...
+다운로드 완료 후 재 컴파일하면 성공하는 모습을 볼 수 있다.
+![alt text](image-3.png)
 
 ## 참조
 
